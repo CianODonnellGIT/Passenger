@@ -60,7 +60,7 @@ class PassengerTest {
     @Test
     void testTitleSuccessMs(){
         passenger.setTitle("Ms");
-        assertEquals("Mrs", passenger.getTitle());
+        assertEquals("Ms", passenger.getTitle());
     }
 
     @Test
