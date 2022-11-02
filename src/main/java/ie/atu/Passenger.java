@@ -29,7 +29,7 @@ public class Passenger {
         }
     }
     public void setId(String id){
-        if(id.length() >10) {
+        if(id.length() >=10) {
             this.id = id;
         }
         else
