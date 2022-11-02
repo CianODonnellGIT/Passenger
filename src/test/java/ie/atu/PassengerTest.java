@@ -13,38 +13,38 @@ class PassengerTest {
 
     @BeforeEach
     void setUp() {
-        passenger = new Passenger(23,"1234567891","Mr", "Cian", "08723456");
+        passenger = new Passenger(23,"12345678910","Mr", "Cian", "08723456");
 
     }
 
     @Test
-    void testInsertedAge(){
+    void testInsertedAgeFail(){
 
-        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"12345678910","Mr", "Cian", "087234567");});
-        assertEquals("This is not a valid age", exMessage.getMessage());
+        Exception exMessage3 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"123456789100","Mr", "Cian", "087234567");});
+        assertEquals("This is not a valid age", exMessage3.getMessage());
     }
 
     @Test
     void testInsertedAgeSuccess(){
-        assertEquals(18, passenger.getAge());
+        assertEquals(23, passenger.getAge());
     }
 
     @Test
-    void testInsertedId(){
+    void testInsertedIdFail(){
 
         Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(23,"123456","Mr", "Cian", "087234567");});
         assertEquals("This is not a valid ID", exMessage.getMessage());
     }
     @Test
     void testIdSuccess(){
-        assertEquals("1808080808", passenger.getId());
+        assertEquals("12345678910", passenger.getId());
     }
 
     @Test
-    void testInsertedTitle(){
+    void testInsertedTitleFail(){
 
-        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"12345678910","Miss", "Cian", "087234567");});
-        assertEquals("This is not a valid title", exMessage.getMessage());
+        Exception exMessage1 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"12345678910","Miss", "Cian", "087234567");});
+        assertEquals("This is not a valid age", exMessage1.getMessage());
     }
     @Test
     void testTitleSuccess(){
@@ -52,10 +52,22 @@ class PassengerTest {
     }
 
     @Test
-    void testInsertedName(){
+    void testTitleSuccessMrs(){
+        passenger.setTitle("Mrs");
+        assertEquals("Mrs", passenger.getTitle());
+    }
 
-        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"12345678910","Mr", "Ci", "087234567");});
-        assertEquals("This is not a valid name", exMessage.getMessage());
+    @Test
+    void testTitleSuccessMs(){
+        passenger.setTitle("Ms");
+        assertEquals("Mrs", passenger.getTitle());
+    }
+
+    @Test
+    void testInsertedNameFail(){
+
+        Exception exMessage2 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"123456789100","Mr", "Ci", "087234567");});
+        assertEquals("This is not a valid age", exMessage2.getMessage());
     }
     @Test
     void testNameSuccess(){
@@ -63,14 +75,14 @@ class PassengerTest {
     }
 
     @Test
-    void testInsertedNumber(){
+    void testInsertedNumberFail(){
 
-        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"12345678910","Mr", "Cian", "087");});
-        assertEquals("This is not a valid number", exMessage.getMessage());
+        Exception exMessage4 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"123456789100","Mr", "Cian", "087");});
+        assertEquals("This is not a valid age", exMessage4.getMessage());
     }
     @Test
     void testNumberSuccess(){
-        assertEquals("0871234567", passenger.getPhoneNumber());
+        assertEquals("08723456", passenger.getPhoneNumber());
     }
 
     @AfterEach
