@@ -3,87 +3,62 @@ package ie.atu;
 
 public class Passenger {
 
-    private int age;
-    private String id;
-    private String title;
-    private String name;
-    private String phoneNumber;
 
-
-    public Passenger(int age, String id, String title, String name, String phoneNumber ){
-        setAge(age);
-        setId(id);
-        setName(name);
-        setTitle(title);
-        setPhoneNumber(phoneNumber);
-
-    }
-
-    public void setAge(int age){
+    public int getAge(int validAge){
+        int age = validAge;
         if(age >16){
-            this.age = age;
+            age = validAge;
         }
         else
         {
             throw new IllegalArgumentException("This is not a valid age");
         }
+        return age;
     }
-    public void setId(String id){
+    public String getId(String validId){
+        String id = validId;
         if(id.length() >=10) {
-            this.id = id;
+            id = validId;
         }
-        else
-        {
+        else {
             throw new IllegalArgumentException("This is not a valid ID");
         }
+        return id;
     }
 
-    public void setTitle(String title){
+    public String getTitle(String validTitle){
+        String title = validTitle;
         if(title.equals("Mr") || title.equals("Mrs") || title.equals("Ms")){
-            this.title = title;
+            title = validTitle;
         }
         else
         {
             throw new IllegalArgumentException("This is not a valid title");
         }
-
+        return title;
     }
-    public void setName(String name){
+    public String getName(String validName){
+        String name = validName;
         if(name.length() > 3 ) {
-            this.name = name;
+            name = validName;
         }
         else
         {
             throw new IllegalArgumentException("This is not a valid name");
         }
+        return name;
     }
 
-    public void setPhoneNumber(String phoneNumber){
+    public String getPhoneNumber(String validPhoneNumber){
+        String phoneNumber = validPhoneNumber;
         if(phoneNumber.length() >7) {
-            this.phoneNumber = phoneNumber;
+            phoneNumber = validPhoneNumber;
         }
         else
         {
             throw new IllegalArgumentException("This is not a valid number");
         }
+        return  phoneNumber;
     }
-
-
-    public int getAge(){
-        return age;
-    }
-    public String getId(){
-        return id;
-    }
-    public String getTitle(){
-        return title;
-    }
-    public String getName(){
-        return name;
-    }
-    public String getPhoneNumber(){
-        return phoneNumber;
-    }
-
 
 }
