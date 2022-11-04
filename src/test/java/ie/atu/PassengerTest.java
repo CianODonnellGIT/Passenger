@@ -8,81 +8,85 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PassengerTest {
 
-    Passenger passenger;
+    Passenger age, id, title, name, phoneNumber;
+
 
 
     @BeforeEach
     void setUp() {
-        passenger = new Passenger(23,"12345678910","Mr", "Cian", "08723456");
-
+      age = new Passenger();
+      id = new Passenger();
+      title = new Passenger();
+      name = new Passenger();
+      phoneNumber = new Passenger();
     }
 
     @Test
     void testInsertedAgeFail(){
 
-        Exception exMessage3 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"123456789100","Mr", "Cian", "087234567");});
-        assertEquals("This is not a valid age", exMessage3.getMessage());
+        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { age.getAge(5);});
+        assertEquals("This is not a valid age", exMessage.getMessage());
     }
 
     @Test
     void testInsertedAgeSuccess(){
-        assertEquals(23, passenger.getAge());
+        assertEquals(23, age.getAge(23));
     }
 
     @Test
     void testInsertedIdFail(){
 
-        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(23,"123456","Mr", "Cian", "087234567");});
+        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { id.getId("g05");});
         assertEquals("This is not a valid ID", exMessage.getMessage());
     }
     @Test
     void testIdSuccess(){
-        assertEquals("12345678910", passenger.getId());
+        assertEquals("12345678910", id.getId("12345678910"));
     }
 
     @Test
     void testInsertedTitleFail(){
 
-        Exception exMessage1 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"12345678910","Miss", "Cian", "087234567");});
-        assertEquals("This is not a valid age", exMessage1.getMessage());
+        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { title.getTitle("Miss");});
+        assertEquals("This is not a valid title", exMessage.getMessage());
     }
     @Test
     void testTitleSuccess(){
-        assertEquals("Mr", passenger.getTitle());
+        assertEquals("Mr", title.getTitle("Mr"));
     }
 
     @Test
     void testTitleSuccessMrs(){
-        passenger.setTitle("Mrs");
-        assertEquals("Mrs", passenger.getTitle());
+        title.getTitle("Mrs");
+        assertEquals("Mrs", title.getTitle("Mrs"));
     }
 
     @Test
     void testTitleSuccessMs(){
-        passenger.setTitle("Ms");
-        assertEquals("Ms", passenger.getTitle());
+        title.getTitle("Ms");
+        assertEquals("Ms", title.getTitle("Ms"));
     }
 
     @Test
     void testInsertedNameFail(){
 
-        Exception exMessage2 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"123456789100","Mr", "Ci", "087234567");});
-        assertEquals("This is not a valid age", exMessage2.getMessage());
+        Exception exMessage =  assertThrows(IllegalArgumentException.class, () -> { name.getName("ian");});
+        assertEquals("This is not a valid name", exMessage.getMessage());
     }
     @Test
     void testNameSuccess(){
-        assertEquals("Cian", passenger.getName());
+        assertEquals("Cian", name.getName("Cian"));
     }
 
     @Test
     void testInsertedNumberFail(){
 
-        Exception exMessage4 =  assertThrows(IllegalArgumentException.class, () -> { new Passenger(5,"123456789100","Mr", "Cian", "087");});
-        assertEquals("This is not a valid age", exMessage4.getMessage());
+        Exception exMessage4 =  assertThrows(IllegalArgumentException.class, () -> { phoneNumber.getPhoneNumber("0987");});
+        assertEquals("This is not a valid number", exMessage4.getMessage());
     }
     @Test
     void testNumberSuccess(){
-        assertEquals("08723456", passenger.getPhoneNumber());
+        assertEquals("08723456", phoneNumber.getPhoneNumber("08723456"));
     }
 
     @AfterEach
