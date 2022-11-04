@@ -3,7 +3,6 @@ package ie.atu;
 
 public class Passenger {
 
-
     public int getAge(int validAge){
         int age = validAge;
         if(age >16){
