@@ -4,19 +4,15 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/<language>:<version TAG>
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: cimg/azul:15.0.9
+       
     steps:
       - checkout
       - run: echo "this is the build job"
   test:
     docker:
-      - image: cimg/<language>:<version TAG>
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: cimg/azul:15.0.9
+      
     steps:
       - checkout
       - run: echo "this is the test job"
